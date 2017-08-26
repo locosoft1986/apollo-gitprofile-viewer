@@ -1,0 +1,25 @@
+@import "./variables.scss";
+
+@mixin active-link() {
+  cursor: pointer;
+  a {
+    color: #fff !important;
+  }
+}
+
+.rp-nav{
+  li {
+    cursor: pointer;
+
+    a {
+      color: #fff !important;
+      padding-left: 8px;
+      border-left: 2px solid $color-primary;
+      transition: border-color 200ms ease-in-out;
+    }
+
+    &.active a{
+      border-color: $color-accent;
+    }
+  }
+}

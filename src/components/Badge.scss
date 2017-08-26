@@ -1,0 +1,28 @@
+@import './variables.scss';
+
+@mixin _badge() {
+  display: inline-block;
+  padding: 2px 10px;
+  font-size: 12px;
+  border-radius: 4px;
+  color: #fff;
+}
+
+.badge {
+  @include _badge();
+  &.primary {
+    background-color: $color-primary;
+  }
+  &.accent {
+    background-color: $color-accent;
+  }
+  &.success {
+    background-color: $color-success;
+  }
+  &.muted {
+    background-color: $color-muted;
+  }
+  &.dark {
+    background-color: $color-dark;
+  }
+}

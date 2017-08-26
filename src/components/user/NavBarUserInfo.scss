@@ -1,0 +1,71 @@
+@import "../variables.scss";
+
+@keyframes show-card-anim{
+  0% {opacity: 0;transform: translate(0, -64px);}
+  100% {opacity: 1;transform: translate(0, 0);}
+}
+
+.rp-navbar-user-info{
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+  height: 100%;
+  .rt-chip-chip{
+    color: #fff;
+    overflow: initial;
+    background-color: $color-primary;
+    align-items: center;
+    display: flex;
+    > span {
+      padding: 0 .2rem;
+    }
+  }
+  .overlay{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 300;
+    background-color: transparent;
+  }
+  .card{
+    display: none;
+    position: fixed;
+    z-index: 301;
+    top: $appbar-height;
+    background-color: $color-primary;
+    animation-duration: .4s;
+    animation-fill-mode: forwards;
+    animation-delay: '0.25s';
+    animation-name: show-card-anim;
+    animation-timing-function: cubic-bezier(0.7,0,0.3,1);
+    box-shadow: 0 3px 3px 0 rgba(0,0,0,.3);
+    &.active{
+      display: block;
+    }
+    .rp-user-info{
+      blockquote{
+        height: 100px;
+        dl{
+          top: 60px;
+          dd > span {
+            height: 2rem;
+            line-height: 2rem;
+          }
+        }
+      }
+      ul{
+        padding: 2rem 1rem 0;
+        font-size: 0.8rem;
+        li{
+          padding: .3rem 0;
+          color: $color-muted;
+          .material-icons{
+            font-size: 1.2rem;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,61 @@
+@import "./variables.scss";
+
+@mixin transition-left-0() {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  &:not(.inactive){
+    transition-delay: 0.1s;
+  }
+}
+
+.rp-layout-nav{
+  width: $left-drawer-width !important;
+
+  > header {
+    background: $color-accent;
+    height: $appbar-height;
+    line-height: $appbar-height;
+    color: #FFF;
+    text-align: center;
+    font-size: 1.5rem;
+  }
+}
+
+.rp-layout{
+  overflow: hidden;
+}
+
+.rp-layout-panel{
+  left: $left-drawer-width !important;
+  top: $appbar-height !important;
+  bottom: 0;
+  overflow: hidden;
+
+  &.inactive {
+    left: 0 !important;
+  }
+
+  .rp-layout-bar{
+    @include transition-left-0();
+  }
+}
+
+.rp-layout-bar{
+  left: $left-drawer-width !important;
+
+  &.inactive {
+    left: 0 !important;
+  }
+
+  @include transition-left-0();
+}
+
+.rp-layout-main {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+
+  aside[data-react-toolbox="drawer"]{
+    top: $appbar-height;
+  }
+}
