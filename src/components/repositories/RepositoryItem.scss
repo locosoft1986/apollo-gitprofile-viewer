@@ -1,3 +1,15 @@
 .rp-repository-item {
   border-bottom: 1px solid rgba(128, 128, 128, 0.3);
 }
+
+.dropdown-item-right {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+}
+
+.dropdown-menu-item {
+  >.rt-menu-caption {
+    font-size: 12px;
+  }
+}

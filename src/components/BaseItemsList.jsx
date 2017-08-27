@@ -9,7 +9,8 @@ export default function(ItemComponent, key='items') {
   return class ItemList extends Component {
     static propTypes = {
       [key]: PropTypes.arrayOf(PropTypes.object),
-      onSelect: PropTypes.func.isRequired
+      onSelect: PropTypes.func.isRequired,
+      onAction: PropTypes.func
     };
 
     static defaultProps = {
@@ -20,6 +21,11 @@ export default function(ItemComponent, key='items') {
       this.props.onSelect(item);
     };
 
+    handleAction = (item) => (type) => {
+      const {onAction} = this.props;
+      onAction && onAction(type, item);
+    };
+
     render() {
       const {children, className, style} = this.props;
       return (
@@ -28,7 +34,10 @@ export default function(ItemComponent, key='items') {
             map(this.props[key], (item) => {
               const {id} = item;
               return (
-                <ItemComponent key={id} item={item} onClick={this.handleSelection(item)} />
+                <ItemComponent key={id}
+                               item={item}
+                               onClick={this.handleSelection(item)}
+                               onAction={this.handleAction(item)} />
               )
             })
           }

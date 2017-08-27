@@ -11,7 +11,7 @@ const RepositoriesView = BaseItemsView(Repositories, 'repositories', 'No Reposit
 const REPO_QUERY = gql`
   query CurrentUserRepos($cursor:String) {
     viewer {
-      repositories(first:10, after:$cursor) {
+      repositories(first:10, after:$cursor, orderBy:{field: CREATED_AT, direction: DESC}) {
         edges {
           node {
             id,
@@ -78,6 +78,11 @@ export default graphql(REPO_QUERY, {
     return {
       loading,
       onSelect: (repo) => {history.push(`/repositories/${repo.owner.login}/${repo.name}/master`)},
+      onAction: (type, repo) => {
+        if(type === 'issues') {
+          history.push(`/issues/${repo.owner.login}/${repo.name}`);
+        }
+      },
       ...other,
       onLoadMore: () => {
         return fetchMore({

@@ -11,6 +11,7 @@ export default function(ItemsComponent, key='items', emptyHint='No Item Found') 
       hasNext: PropTypes.bool,
       [key]: PropTypes.arrayOf(PropTypes.object),
       onSelect: PropTypes.func.isRequired,
+      onAction: PropTypes.func,
       onLoadMore: PropTypes.func.isRequired,
       loadButton: PropTypes.any
     };
@@ -22,11 +23,12 @@ export default function(ItemsComponent, key='items', emptyHint='No Item Found') 
 
     render() {
       const {
-        hasNext, loading, onSelect, onLoadMore, loadButton
+        hasNext, loading, onSelect, onAction, onLoadMore, loadButton
       } = this.props;
       const propsToPass = {
         [key]: this.props[key],
-        onSelect
+        onSelect,
+        onAction
       }
       const items = (loading || !isEmpty(this.props[key])) ?
         <ItemsComponent {...propsToPass} />: (<p>{emptyHint}</p>);
