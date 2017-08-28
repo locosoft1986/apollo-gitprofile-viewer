@@ -21,6 +21,9 @@ const ISSUE_QUERY = gql`
               author {
                 login
               }
+              comments{
+                totalCount
+              }
             }
           }
           pageInfo {
@@ -52,11 +55,11 @@ export default graphql(ISSUE_QUERY, {
       }
     }
   },
-  props({ data: { loading, repository, fetchMore }, ownProps:{match:{params:{owner, name, branch}}}}) {
+  props({ data: { loading, repository, fetchMore }, ownProps:{history, match:{params:{owner, name}}}}) {
     const {endCursor, ...other} = flattenIssues(repository);
     return {
       loading,
-      onSelect: () => {},
+      onSelect: (issue) => {history.push(`/issues/${owner}/${name}/${issue.number}`)},
       ...other,
       onLoadMore: () => {
         return fetchMore({

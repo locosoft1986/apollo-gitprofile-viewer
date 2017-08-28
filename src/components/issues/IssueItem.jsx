@@ -6,8 +6,10 @@ import formatDate from '../../utils/formatDate';
 import './IssueItem.css';
 
 const IssueItem = ({className, onClick, item, ...props}) => {
-  const {title, author:{login}, number, createdAt} = item;
-  const legend = `#${number}, Issued By: ${login}, At:${formatDate(createdAt, 'YYYY-MM-DD HH:mm')}`;
+  const {title, author:{login}, number, comments:{totalCount},createdAt} = item;
+  const legend = `#${number}, Issued By: ${login}, Comments:${totalCount} At:${
+    formatDate(createdAt, 'YYYY-MM-DD HH:mm')
+  }`;
   return (
     <ListItem className={classnames('rp-issue-item', className)}
               caption={title}

@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Router } from 'react-router';
 import { Route, Redirect, Switch } from 'react-router-dom';
 
-import {Layout, Repositories, Commits, Issues} from './containers';
+import {Layout, Repositories, Commits, Issues, Issue} from './containers';
 
 import './App.css';
 
@@ -41,6 +41,7 @@ class App extends Component {
               <Route path="/repositories" component={Repositories} exact/>
               <Route path="/repositories/:owner/:name/:branch" component={Commits} exact/>
               <Route path="/issues/:owner/:name" component={Issues} exact/>
+              <Route path="/issues/:owner/:name/:number" component={Issue} exact/>
             </Layout>
           </Switch>
         </Router>
