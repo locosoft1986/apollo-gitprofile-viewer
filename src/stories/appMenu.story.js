@@ -16,7 +16,7 @@ storiesOf('AppMenu', module)
   .add('active status', () => {
     return (
       <div style={{padding: '2rem', background: '#595f6f'}}>
-        <AppMenu location='/articles' onMenuClick={action('onMenuClick')}/>
+        <AppMenu location='/repositories' onMenuClick={action('onMenuClick')}/>
       </div>
     )
   })

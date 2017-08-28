@@ -24,7 +24,7 @@ storiesOf('Repositories', module)
   .add('default', () => {
     return (
       <div style={{padding: '1rem', background: 'white'}}>
-        <Repositories repositories={repositories} onSelect={action('onSelect')}/>
+        <Repositories repositories={repositories} onSelect={action('onSelect')} onAction={action('onAction')}/>
       </div>
     )
   });
